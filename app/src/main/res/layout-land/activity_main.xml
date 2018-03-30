@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:stream="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:weightSum="1.0"
+    tools:context="io.aniruddh.edison.MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/controllerLayout"
+        android:padding="16dp">
+
+    <LinearLayout
+        android:layout_weight="0.5"
+        android:layout_height="match_parent"
+        android:layout_width="0dp"
+        android:padding="16dp"
+        android:orientation="vertical"
+        android:weightSum="1">
+
+        <!--<ImageView
+            android:id="@+id/fpv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.7"
+            android:src="@drawable/bg_stick"
+            android:padding="16dp" />-->
+
+
+        <com.github.niqdev.mjpeg.MjpegSurfaceView
+            android:id="@+id/fpv"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.6"
+            android:padding="16dp"
+            stream:type="stream_default" />
+
+        <LinearLayout
+            android:layout_weight="0.3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:orientation="horizontal"
+            android:padding="16dp"
+            android:weightSum="3"
+            android:gravity="center">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Pilot Mode"/>
+
+                <Spinner
+                    android:id="@+id/pilotModeSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/pilot_options"
+                    android:prompt="@string/pilot_prompt">
+
+                </Spinner>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Throttle Mode"/>
+
+                <Spinner
+                    android:id="@+id/throttleModeSpinner"
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/throttle_options"
+                    android:prompt="@string/throttle_prompt">
+
+                </Spinner>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:weightSum="2">
+
+                <TextView
+                    android:layout_weight="1"
+                    android:padding="8dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Max"/>
+
+                <Spinner
+                    android:id="@+id/throttleMaxSpinner"
+                    android:layout_weight="1"
+                    android:layout_width="wrap_content"
+                    android:padding="8dp"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/throttle_values"
+                    android:prompt="@string/max_throttle_prompt">
+
+                </Spinner>
+            </LinearLayout>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.1"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:padding="4dp"
+            android:weightSum="3">
+
+            <TextView
+                android:id="@+id/angleView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="A : 0.00"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/throttleView"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="T : 0.00"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/preferences_text"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:onClick="openSettings"
+                android:text="Preferences"
+                android:textAllCaps="true">
+
+            </TextView>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:layout_weight="0.5"
+        android:gravity="center_vertical">
+
+        <com.jmedeisis.bugstick.Joystick
+            android:id="@+id/joystick"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_base">
+
+            <!-- You may use any View here. -->
+            <Button
+                android:layout_width="@dimen/stick_size"
+                android:layout_height="@dimen/stick_size"
+                android:background="@drawable/bg_stick" />
+
+        </com.jmedeisis.bugstick.Joystick>
+    </LinearLayout>
+    </LinearLayout>
+
+
+
+</LinearLayout>
